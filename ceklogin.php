@@ -19,17 +19,22 @@ $cek=mysqli_num_rows($hasil);
 if ($cek==1){
 $_SESSION['username']=$kode['username'];
 $_SESSION['password']=$kode['password'];
-
-    if ($kode) {
-        header("Location: home.php");
-    }    
-} else { 
-	?>
-		<script>
-		alert('Username atau Password Salah !!');
-		document.location.href = 'login.php';
-		</script>
-	<?php 
+if ($kode) {
+	header("Location: home.php");
+}
+// empty value validation
+} else if (!$username && !$password){
+	$_SESSION['null'] = 'Username atau Password tidak Boleh Kosong !!!';
+	header("Location: login.php");
+} else if (!$username) {
+	$_SESSION['null'] = 'Username tidak Boleh Kosong !!!';
+	header("Location: login.php");
+} else if (!$password) {
+	$_SESSION['null'] = 'Password tidak Boleh Kosong !!!';
+	header("Location: login.php");
+}  else {
+	$_SESSION['error'] = 'Username atau Password Salah !!!';
+	header("Location: login.php");
 }
 
 ?>

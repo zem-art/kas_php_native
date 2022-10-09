@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['username'])) {
-    header("Location: home.php");
-    die();
-}
+// if(isset($_SESSION['username'])) {
+//     header("Location: home.php");
+//     die();
+// }
 ?>
 
     <!DOCTYPE html>
@@ -18,7 +18,7 @@ if(isset($_SESSION['username'])) {
         <meta name="keywords" content="au theme template">
 
         <!-- Title Page-->
-        <title>Sign In</title>
+        <title>Sign Up</title>
 
         <link rel="stylesheet" href="alert/css/sweetalert.css">
 
@@ -40,7 +40,7 @@ if(isset($_SESSION['username'])) {
         <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
         <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
-        <!-- Main CSS-->
+        <!-- Main CSS -->
         <link href="css/theme.css" rel="stylesheet" media="all">
 
     </head>
@@ -50,52 +50,70 @@ if(isset($_SESSION['username'])) {
             <div class="page-content--bge5">
                 <div class="container">
                     <div class="login-wrap">
-                        <div class="login-content">
+                        <div class="register-content">
                             <div class="login-logo">
-                                <h1>Sign In</h1>
+                                <h1>Sign Up</h1>
                             </div>
                             <div class="register-link">
                                 <marquee behavior="" direction="">Sistem Informasi Pengelolaan Kas </marquee>
                                 <br>
                             </div>
                             <?php
-                            if(isset($_SESSION['null'])) {?>
-                                <div class="alert alert-warning" role="alert">
-                                    <?php echo $_SESSION['null']?>
-                                </div>
+                            if(isset($_SESSION['error'])) {
+                            ?>
+                            <div class="alert alert-warning" role="alert">
+                            <?php echo $_SESSION['error']?>
+                            </div>
                             <?php
-                            unset($_SESSION['null']);
-                            } else if (isset($_SESSION['error'])) {?>
-                                <div class="alert alert-danger" role="alert">
-                                    <?php echo $_SESSION['error']?>
-                                </div>
-                            <?php
-                            unset($_SESSION['error']);
                             }?>
+                            <?php
+                            if(isset($_SESSION['message'])) { ?>
+                            <div class="alert alert-success" role="alert">
+                            <?php echo $_SESSION['message']?>
+                            </div>
+                            <?php
+                            }
+                            ?>
+                            <?php
+                            if(isset($_SESSION['data'])) { ?>
+                            <div class="alert alert-success" role="alert">
+                            <?php echo $_SESSION['data']?>
+                            </div>
+                            <?php
+                            }
+                            ?>
                             <div class="login-form">
-                                <form action="ceklogin.php" method="post">
-                                    <div class="form-group">
-                                        <label><b>Username</b></label>
-                                        <input class="au-input au-input--full" type="text" name="username" placeholder="Your Name">
+                                <form action="process-register.php" method="post">
+                                    <div class="form-group-register">
+                                        <label><b>Name</b></label>
+                                        <input class="au-input au-input--full" type="text" name="nama" placeholder="Your Name">
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group-register">
+                                        <label><b>Username</b></label>
+                                        <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                    </div>
+                                    <div class="form-group-register">
                                         <label><b>Password</b></label>
                                         <input class="au-input au-input--full" type="password" name="password" placeholder="Your Password">
+                                    </div>
+                                    <div class="form-group-register">
+                                        <label><b>Confirm Password</b></label>
+                                        <input class="au-input au-input--full" type="password" name="password_confirmation" placeholder="Confirm Your Password">
                                     </div>
                                     <br>
                                     <div class="btn-path">
                                         <span>
                                             <center>
-                                            <a href="register.php" class="btn btn-md btn-outline-info"  id="btn-login" type="button">Sign Up &nbsp;&nbsp;</a>
+                                            <button class="btn btn-md btn-outline-danger"  id="btn-login" type="reset">Reset &nbsp;&nbsp;</button>
                                         </span> &nbsp; &nbsp;
-                                        <!-- <span>
-                                            <center>
-                                            <button class="btn btn-md btn-outline-danger" id="btn-login" type="reset">Reset &nbsp;&nbsp;</button>
-                                        </span> &nbsp; &nbsp; -->
                                         <span>
-                                            <button class="btn btn-md btn-outline-primary" id="btn-login" type="submit">Sign In&nbsp;</button>
+                                            <button class="btn btn-md btn-outline-primary" id="btn-login" type="submit">Sign Up &nbsp;</button>
                                             </center>
                                         </span>
+                                    </div>
+                                    <div class="register-link">
+                                        <br>
+                                        <p>do you already have an account <a href="login.php"> sign in</a></p>
                                     </div>
                                 </form>
                                 <div class="register-link">
@@ -142,3 +160,6 @@ if(isset($_SESSION['username'])) {
 
     </html>
     <!-- end document-->
+<?php
+session_destroy();
+?>

@@ -39,7 +39,7 @@ padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;">Date :
                     <?php date_default_timezone_set('Asia/Jakarta');
-echo date('d-m-Y'); ?> &nbsp; &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust" title="Logout">Keluar</a> </div>
+echo date('d-m-Y H:i'); ?> &nbsp; &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust" title="Logout">Keluar</a> </div>
             </nav>
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
@@ -48,26 +48,23 @@ echo date('d-m-Y'); ?> &nbsp; &nbsp; <a href="logout.php" class="btn btn-danger 
                         <li class="text-center">
                             <img src="assets/img/find_user2.png" class="user-image img-responsive" />
                         </li>
-
                         <li>
-                            <a href="home.php"><i class="glyphicon glyphicon-home
-"></i> Dashboard</a>
+                            <a href="home.php"><i class="glyphicon glyphicon-home"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="?page=masuk"><i class="glyphicon glyphicon-floppy-save
-"></i> Kas Masuk</a>
+                            <a href="?page=masuk"><i class="glyphicon glyphicon-floppy-save"></i> Kas Masuk</a>
                         </li>
                         <li>
-                            <a href="?page=keluar"><i class="glyphicon glyphicon-floppy-open
-"></i> Kas Keluar</a>
+                            <a href="?page=keluar"><i class="glyphicon glyphicon-floppy-open"></i> Kas Keluar</a>
                         </li>
                         <li>
-                            <a href="?page=rekap"><i class="glyphicon glyphicon-tasks
-"></i> Rekapitulasi Kas</a>
+                            <a href="?page=rekap"><i class="glyphicon glyphicon-tasks"></i> Rekapitulasi Kas</a>
                         </li>
+                            <li>
+                                <a href="?page=rekap"><i class="glyphicon glyphicon-tasks"></i>Daftar Admin</a>
+                            </li>
                         <li>
-                            <a href="?page=user"><i class="glyphicon glyphicon-user
-"></i> Support</a>
+                            <a href="?page=user"><i class="glyphicon glyphicon-user"></i> Support</a>
                         </li>
                     </ul>
                 </div>
