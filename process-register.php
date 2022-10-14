@@ -3,7 +3,7 @@ session_start();
 
 include "koneksi.php";
 
-//dapatkan data user dari form register
+// get user data from register form
 $user = [
 	'nama' => $_POST['nama'],
 	'username' => $_POST['username'],
@@ -12,13 +12,35 @@ $user = [
 	'level' => '2'
 ];
 
-//validasi jika password & password_confirmation sama
-
+// validate if password & password_confirmation are the same
 if($user['password'] != $user['password_confirmation']){
 	$_SESSION['error'] = 'Password yang anda masukkan tidak sama dengan password confirmation.';
 	$_SESSION['nama'] = $_POST['nama'];
 	$_SESSION['username'] = $_POST['username'];
-	header("Location: /register.php");
+	header("Location: register.php");
+	return;
+}
+
+// validation if one does not exist
+if(!$user['username'] && !$user['nama'] && !$user['password'] && !$user['password_confirmation']){
+	$_SESSION['error'] = 'Maaf Form Tidak Boleh Kosong!!';
+	header("Location: register.php");
+	return;
+} else if (!$user['username']){
+	$_SESSION['null'] = 'Username Tidak Boleh Kosong!!';
+	header("Location: register.php");
+	return;
+} else if (!$user['nama']){
+	$_SESSION['null'] = 'Nama Tidak Boleh Kosong!!';
+	header("Location: register.php");
+	return;
+} else if (!$user['password']){
+	$_SESSION['null'] = 'password Tidak Boleh Kosong!!';
+	header("Location: register.php");
+	return;
+} else if (!$user['password_confirmation']){
+	$_SESSION['null'] = 'password_confirmation Tidak Boleh Kosong!!';
+	header("Location: register.php");
 	return;
 }
 
@@ -29,19 +51,20 @@ $hasil = mysqli_query($koneksi, "$query");
 $data = mysqli_fetch_array($hasil);
 $cek = mysqli_num_rows($hasil);
 
-//jika username sudah ada, maka return kembali ke halaman register.
+// if the username already exists, then return back to the register page.
 if($cek == 1){
 	$_SESSION['error'] = 'Username: '. $user['username'].' yang anda masukkan sudah ada di database.';
 	$_SESSION['nama'] = $_POST['nama'];
 	$_SESSION['password'] = $_POST['password'];
 	$_SESSION['password_confirmation'] = $_POST['password_confirmation'];
-	header("Location: /register.php");
+	header("Location: register.php");
 	return;
-
-}else{
+} else{
 	//hash password
-	$password = password_hash($user['password'],PASSWORD_DEFAULT);
-	//username unik. simpan di database.
+	// $password = password_hash($user['password'],PASSWORD_DEFAULT);
+	$password = $user['password'];
+	
+	// unique usernames. save in database.
 	$username = $user['username'];
 	$nama = $user['nama'];
 	$level = $user['level'];
@@ -51,7 +74,7 @@ if($cek == 1){
 	$hasil = mysqli_query($koneksi, "$query");
 
 	$_SESSION['message']  = 'Berhasil register ke dalam sistem. Silakan login dengan username dan password yang sudah dibuat.';
-	header("Location: /register.php");
+	header("Location: register.php");
 }
 
 ?>

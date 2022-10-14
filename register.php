@@ -58,30 +58,38 @@ session_start();
                                 <marquee behavior="" direction="">Sistem Informasi Pengelolaan Kas </marquee>
                                 <br>
                             </div>
-                            <?php
-                            if(isset($_SESSION['error'])) {
-                            ?>
-                            <div class="alert alert-warning" role="alert">
-                            <?php echo $_SESSION['error']?>
-                            </div>
-                            <?php
-                            }?>
-                            <?php
-                            if(isset($_SESSION['message'])) { ?>
-                            <div class="alert alert-success" role="alert">
-                            <?php echo $_SESSION['message']?>
-                            </div>
-                            <?php
-                            }
-                            ?>
-                            <?php
-                            if(isset($_SESSION['data'])) { ?>
-                            <div class="alert alert-success" role="alert">
-                            <?php echo $_SESSION['data']?>
-                            </div>
-                            <?php
-                            }
-                            ?>
+                            <?php if(isset($_SESSION['null'])) { ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong><?php echo $_SESSION['null']?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['message'])) { ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong><?php echo $_SESSION['message']?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['data'])) { ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong><?php echo $_SESSION['data']?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php } ?>
+                            <?php if(isset($_SESSION['error'])) { ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong><?php echo $_SESSION['error']?></strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php } ?>
                             <div class="login-form">
                                 <form action="process-register.php" method="post">
                                     <div class="form-group-register">
