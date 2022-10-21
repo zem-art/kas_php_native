@@ -19,7 +19,6 @@ if($user['password'] != $user['password_confirmation']){
 	$_SESSION['nama'] = $_POST['nama'];
 	$_SESSION['username'] = $_POST['username'];
 	header("Location: /register.php");
-	return;
 }
 
 //check apakah user dengan username tersebut ada di table users
@@ -38,7 +37,10 @@ if($cek == 1){
 	header("Location: /register.php");
 	return;
 
-}else{
+} else if ($user['password'] !== $user['password_confirmation']){
+
+
+} else{
 	//hash password
 	$password = password_hash($user['password'],PASSWORD_DEFAULT);
 	//username unik. simpan di database.

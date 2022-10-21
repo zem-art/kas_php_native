@@ -34,20 +34,23 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
                     </button>
                     <a class="navbar-brand" href="index.php"><small>Pengelolaan Kas</small></a>
                 </div>
-                <div style="color: white;
-padding: 15px 50px 5px 50px;
-float: right;
-font-size: 16px;">Date :
-                    <?php date_default_timezone_set('Asia/Jakarta');
-echo date('d-m-Y H:i'); ?> &nbsp; &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust" title="Logout">Keluar</a> </div>
+                <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
+                <!-- <li class="text-center">
+                            <img src="assets/img/find_user2.png" class="user-image img-responsive" />
+                        </li> -->
+                Date : <?php date_default_timezone_set('Asia/Jakarta');
+                        echo date('d-m-Y H:i'); ?> 
+                        &nbsp; &nbsp;
+                    <a href="logout.php" class="btn btn-danger square-btn-adjust" title="Logout">Log Out</a>
+                </div>
             </nav>
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
-                        <li class="text-center">
+                        <!-- <li class="text-center">
                             <img src="assets/img/find_user2.png" class="user-image img-responsive" />
-                        </li>
+                        </li> -->
                         <li>
                             <a href="home.php"><i class="glyphicon glyphicon-home"></i> Dashboard</a>
                         </li>

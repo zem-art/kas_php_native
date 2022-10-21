@@ -14,7 +14,7 @@ if(isset($_SESSION['username'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="au theme template">
-        <meta name="author" content="Hau Nguyen">
+        <meta name="author" content="Zem-art">
         <meta name="keywords" content="au theme template">
 
         <!-- Title Page-->
@@ -47,7 +47,7 @@ if(isset($_SESSION['username'])) {
 
     <body class="animsition">
         <div class="page-wrapper">
-            <div class="page-content--bge5">
+            <div class="page-content--bge5" style="background-color : black">
                 <div class="container">
                     <div class="login-wrap">
                         <div class="login-content">
