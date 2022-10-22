@@ -17,9 +17,6 @@ if($user['password'] != $user['password_confirmation']){
 	$_SESSION['error'] = 'Password yang anda masukkan tidak sama dengan password confirmation.';
 	$_SESSION['nama'] = $_POST['nama'];
 	$_SESSION['username'] = $_POST['username'];
-<<<<<<< HEAD
-	header("Location: /register.php");
-=======
 	header("Location: register.php");
 	return;
 }
@@ -45,7 +42,6 @@ if(!$user['username'] && !$user['nama'] && !$user['password'] && !$user['passwor
 	$_SESSION['null'] = 'password_confirmation Tidak Boleh Kosong!!';
 	header("Location: register.php");
 	return;
->>>>>>> e064e335c0296dbb72b090e8f96e11d2b082f246
 }
 
 //check apakah user dengan username tersebut ada di table users
@@ -63,13 +59,6 @@ if($cek == 1){
 	$_SESSION['password_confirmation'] = $_POST['password_confirmation'];
 	header("Location: register.php");
 	return;
-<<<<<<< HEAD
-
-} else if ($user['password'] !== $user['password_confirmation']){
-
-
-=======
->>>>>>> e064e335c0296dbb72b090e8f96e11d2b082f246
 } else{
 	//hash password
 	// $password = password_hash($user['password'],PASSWORD_DEFAULT);
