@@ -18,7 +18,7 @@ body {
 
  #wrapper {
     width: 100%;
-    background:#202020;
+    background:#B2B2B2;
 }
 
 #page-wrapper {
@@ -206,13 +206,16 @@ max-width:20px;
 }
 
 .navbar-cls-top .navbar-brand {
-	color: #fff;
-background: green;
+color: #fff;
+background: #00ABB3;
 width: 260px;
 text-align: center;
 height: 60px;
 font-size: 30px;
 font-weight: 700;
+}
+.navbar-brand small{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 }
 .active-menu {
     background-color:#C90000!important;
@@ -311,7 +314,7 @@ font-weight: 700;
 }
 .navbar-cls-top .navbar-brand:hover {
 
-background: limegreen;
+background: #00ABB3;
 color:#fff;
 
 }
@@ -321,7 +324,7 @@ border:0px solid black;
      
 }
 .navbar-header {
-    background: green;
+    background: #00ABB3;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 background-color: #B40101;

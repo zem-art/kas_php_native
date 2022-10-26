@@ -38,10 +38,10 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
                 <!-- <li class="text-center">
                             <img src="assets/img/find_user2.png" class="user-image img-responsive" />
                         </li> -->
-                Date : <?php date_default_timezone_set('Asia/Jakarta');
-                        echo date('d-m-Y H:i'); ?> 
+                    Date : <a style="margin-right:10px; color : #FFFFFF" id="time">
                         &nbsp; &nbsp;
-                    <a href="logout.php" class="btn btn-danger square-btn-adjust" title="Logout">Log Out</a>
+                    <!-- <a href="logout.php" class="btn btn-danger square-btn-adjust" title="Logout">Log Out</a> -->
+                    <a href="logout.php" style=" color : #FFFFFF" ><i class="glyphicon glyphicon-log-out"></i></a>
                 </div>
             </nav>
             <!-- /. NAV TOP  -->
@@ -63,12 +63,14 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
                         <li>
                             <a href="?page=rekap"><i class="glyphicon glyphicon-tasks"></i> Rekapitulasi Kas</a>
                         </li>
+                        <?php if ($_SESSION['level'] == 1){?>
                             <li>
-                                <a href="?page=rekap"><i class="glyphicon glyphicon-tasks"></i>Daftar Admin</a>
+                                <a href="?page=admin"><i class="glyphicon glyphicon-user"></i>Daftar Admin</a>
                             </li>
-                        <li>
+                        <?php }?>
+                        <!-- <li>
                             <a href="?page=user"><i class="glyphicon glyphicon-user"></i> Support</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -99,13 +101,15 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
                             if($aksi =="") {
                                 include 'page/rekap/rekap.php';
                             }
+                        } elseif ($page == "admin") {
+                            include 'page/admin/admin.php';
                         } elseif ($page == "user") {
                             if($aksi =="") {
                                 include 'page/user/user.php';
                             }
                         } elseif ($page == "") {                           
-                                include 'dashboard.php';
-                            }                       
+                            include 'dashboard.php';
+                        }                     
                      ?>
 
                         </div>
@@ -147,7 +151,30 @@ error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
         </script>
         <!-- CUSTOM SCRIPTS -->
         <script src="assets/js/custom.js"></script>
+        <script>
+            var timeDisplay = document.getElementById("time");
+            var timeDisplayBig = document.getElementById("timeBig");
 
+            function refreshTime() {
+                // // original date format
+                //var dateString = new Date().toLocaleString();
+                //var formattedString = dateString.replaceAll(".", "-");
+
+                var today = new Date();
+                var yyyy = today.getFullYear();
+                var mm = String(today.getMonth() + 1).padStart(2, '0');
+                var dd = String(today.getDate()).padStart(2, '0');
+                var hh = String(today.getHours())
+                var mnt = String(today.getMinutes())
+                var ss = String(today.getSeconds())
+
+                today = yyyy + '-' + mm + '-' + dd + ' : ' + hh + '.' + mnt + '.' + ss;
+                
+                timeDisplay.innerHTML = today;
+                timeDisplayBig.innerHTML = today
+            }
+            setInterval(refreshTime, 1000);
+        </script>
     </body>
 
     </html>

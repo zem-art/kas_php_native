@@ -15,10 +15,12 @@ $hasil=mysqli_query($koneksi, "$query");
 
 $kode = mysqli_fetch_array($hasil);
 $cek=mysqli_num_rows($hasil);
-
+// print_r($kode);
+// exit;
 if ($cek==1){
 	$_SESSION['username']=$kode['username'];
 	$_SESSION['password']=$kode['password'];
+	$_SESSION['level']=$kode['level'];
 	// get data
 	if ($kode) {
 		header("Location: home.php");
