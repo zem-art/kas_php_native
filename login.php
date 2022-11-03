@@ -47,7 +47,7 @@ if(isset($_SESSION['username'])) {
 
     <body class="animsition">
         <div class="page-wrapper">
-            <div class="page-content--bge5" style="background-color : black">
+            <div class="page-content--bge5">
                 <div class="container">
                     <div class="login-wrap">
                         <div class="login-content">
